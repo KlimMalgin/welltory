@@ -1,19 +1,18 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import 'normalize.css';
+import './styles/app.less';
+import App from './containers/app';
+import NotFoundPage from './pages/not-found-page';
+import MainPage from './pages/main-page';
 
-import './styles/app.less'
-import App from './containers/app'
-import NotFoundPage from './pages/not-found-page'
-import MainPage from './pages/main-page'
+import configureStore from './store/configure-store'; 
+import { syncHistoryWithStore } from 'react-router-redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import configureStore from './store/configure-store'
-import { syncHistoryWithStore } from 'react-router-redux'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-
-const store = configureStore()
-const history = syncHistoryWithStore(browserHistory, store)
+const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
   <Provider store={store}>
