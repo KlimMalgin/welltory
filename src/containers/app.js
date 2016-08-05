@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import merge from 'merge';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -11,9 +12,18 @@ import * as actions from '../actions'
 injectTapEventPlugin();
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    props.actions.auth.getCsrf();
+    //props.actions.auth.signin('testfront@welltory.com', 'testwell');
+  }
+  
   
   childrenActions () {
-    return this.props.actions.tools;
+    return merge(
+      this.props.actions.tools,
+      this.props.actions.auth
+    );
   }
   
   /**
@@ -23,7 +33,7 @@ class App extends Component {
   childrenData () {
     return {
       // Данные стора для текущей страницы
-      data: this.props.tools,
+      data: merge(this.props.tools, this.props.auth),
       // Состояние форм
       form: this.props.form
     };
@@ -39,6 +49,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     tools: state.tools,
+    auth: state.auth,
     form: state.form
   }
 }
@@ -46,6 +57,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
+      auth: bindActionCreators(actions.auth, dispatch),
       tools: bindActionCreators(actions.tools, dispatch)
     }
   }

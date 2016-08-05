@@ -1,6 +1,6 @@
 
 let config = {
-    server: 'https://localhost/',
+    server: 'https://api.welltory.com/',
     files: {
         default: 'sites/default/files/',
         img: {
@@ -10,10 +10,10 @@ let config = {
         }
     },
     api: {
-        url: 'vapi/v1/',
+        url: 'api2/',
         endpoints: {
-            genre: 'genre',
-            user: 'userentry'
+            csrf: 'api/version',
+            signin: 'auth'
         }
     }
 };
