@@ -14,7 +14,7 @@ injectTapEventPlugin();
 class App extends Component {
   constructor(props) {
     super(props);
-    props.actions.auth.getCsrf();
+    //props.actions.auth.getCsrf();
     //props.actions.auth.signin('testfront@welltory.com', 'testwell');
   }
   

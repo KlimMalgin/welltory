@@ -10,7 +10,7 @@ export default class MainPage extends Component {
     render() {
         return <div className='main-page'>
             <Grid >
-                <SigninForm />
+                <SigninForm onSubmit={(email, pwd) => {console.log('onSubmit: %o %o', email, pwd);}} />
             </Grid>
         </div>;
     }
