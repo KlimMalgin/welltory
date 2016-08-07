@@ -1,6 +1,6 @@
 
 import transport from './transport';
-import { endpoints } from '../config';
+import { config, endpoints } from '../config';
 
 
 /**
@@ -15,5 +15,16 @@ export function csrf () {
 }
 
 export function signin (email, pwd) {
-    return transport(endpoints.signin, { method: 'POST' }, { email: email, password: pwd });
+    return transport(
+            endpoints.signin, 
+            { // params
+                method: 'POST'
+            }, 
+            { // body
+                email: email, password: pwd 
+            },
+            { // headers
+                'X-CSRFToken': config.csrf
+            }
+        );
 }
