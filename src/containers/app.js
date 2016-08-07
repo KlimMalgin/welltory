@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import merge from 'merge';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import * as actions from '../actions'
+import * as actions from '../actions';
 
 // Needed for onTouchTap 
 // http://stackoverflow.com/a/34015469/988941 
@@ -14,7 +14,7 @@ injectTapEventPlugin();
 class App extends Component {
   constructor(props) {
     super(props);
-    props.actions.auth.getCsrf();
+    //props.actions.auth.getCsrf();
     //props.actions.auth.signin('testfront@welltory.com', 'testwell');
   }
   
@@ -51,7 +51,7 @@ function mapStateToProps(state) {
     tools: state.tools,
     auth: state.auth,
     form: state.form
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -60,7 +60,7 @@ function mapDispatchToProps(dispatch) {
       auth: bindActionCreators(actions.auth, dispatch),
       tools: bindActionCreators(actions.tools, dispatch)
     }
-  }
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

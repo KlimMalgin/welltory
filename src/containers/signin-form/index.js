@@ -1,6 +1,7 @@
 
 
 import './signin-form.less';
-import SigninForm from './signin-form';
+import SigninForm, { fields } from './signin-form';
 
+export { fields };
 export default SigninForm;
