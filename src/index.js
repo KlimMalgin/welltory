@@ -6,6 +6,7 @@ import './styles/app.less';
 import App from './components/app';
 import NotFoundPage from './pages/not-found-page';
 import MainPage from './pages/main-page';
+import ListPage from './pages/list-page';
 
 import configureStore from './store/configure-store'; 
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -19,7 +20,8 @@ render(
     <Router history={history}>
       <Route path='/' component={App}>
         <IndexRoute component={MainPage} />
-        <Route path='/editor' component={MainPage} />
+        <Route path='/main' component={MainPage} />
+        <Route path='/list' component={ListPage} />
         { /* <Route path='/user/:userId/content/:contentId' component={UserPage} /> */ }
         <Route path='*' component={NotFoundPage} />
       </Route>

@@ -23,6 +23,7 @@ class App extends Component {
   childrenActions () {
     return merge(
       this.props.actions.tools,
+      this.props.actions.list,
       this.props.actions.auth
     );
   }
@@ -34,7 +35,7 @@ class App extends Component {
   childrenData () {
     return {
       // Данные стора для текущей страницы
-      data: merge(this.props.tools, this.props.auth),
+      data: merge(this.props.tools, this.props.auth, this.props.list),
       // Состояние форм
       form: this.props.form
     };
@@ -56,6 +57,7 @@ function mapStateToProps(state) {
   return {
     tools: state.tools,
     auth: state.auth,
+    list: state.list,
     form: state.form
   }
 }
@@ -63,6 +65,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
+      list: bindActionCreators(actions.list, dispatch),
       auth: bindActionCreators(actions.auth, dispatch),
       tools: bindActionCreators(actions.tools, dispatch)
     }

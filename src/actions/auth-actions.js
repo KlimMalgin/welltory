@@ -4,19 +4,20 @@ import {
     GET_CSRF_FAIL,
     GET_CSRF_SUCCESS,
     
-    /*GET_PROFILE,
+    GET_PROFILE,
     GET_PROFILE_FAIL,
-    GET_PROFILE_SUCCESS,*/
+    GET_PROFILE_SUCCESS,
     
     SIGNIN,
     SIGNIN_FAIL,
     SIGNIN_SUCCESS
     } from '../constants/auth';
 
-import { csrf, /*profile,*/ signin as postSignin } from '../api/rest';
+import { csrf, profile, signin as postSignin } from '../api/rest';
+import { push } from 'react-router-redux';
 
 
-/*function getProfile(dispatch) {
+export function getProfile(dispatch) {
     dispatch({
         type: GET_PROFILE
     });
@@ -34,7 +35,7 @@ import { csrf, /*profile,*/ signin as postSignin } from '../api/rest';
                 type: GET_PROFILE_FAIL
             });
         });    
-}*/
+}
 
 export function getCsrf() {
     return function (dispatch) {
@@ -43,7 +44,6 @@ export function getCsrf() {
         });
         
         csrf().then(function (response) {
-            debugger;
             dispatch({
                 type: GET_CSRF_SUCCESS, 
                 payload: response.body
@@ -64,11 +64,10 @@ export function signin (email, pwd) {
         });
         
         postSignin(email, pwd).then(function (response) {
-            debugger;
             dispatch({
                 type: SIGNIN_SUCCESS, 
                 payload: response.body
-            })
+            }).then(() => dispatch(push('/list')))
         }).catch(function (/*err*/) {
             dispatch({
                 type: SIGNIN_FAIL,

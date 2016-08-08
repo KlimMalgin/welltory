@@ -37,3 +37,13 @@ export function profile () {
             'X-CSRFToken': config.csrf
         });
 }
+
+export function list () {
+    return transport(
+        endpoints.list,
+        {},{},
+        { // headers
+            'X-CSRFToken': config.csrf
+        }
+    );
+}

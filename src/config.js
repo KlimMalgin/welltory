@@ -7,7 +7,8 @@ let config = {
         endpoints: {
             csrf: 'api/version',
             signin: 'auth/',
-            profile: 'profile/'
+            profile: 'profile/',
+            list: 'data/rr/'
         }
     }
 };
