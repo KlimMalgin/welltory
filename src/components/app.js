@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import merge from 'merge';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -41,6 +42,11 @@ class App extends Component {
   
   render() {
     return <div className='app'>
+      <Navbar fixedTop fluid className='header'>
+        <Nav pullRight>
+          <NavItem eventKey={1} className='header__user-name'>{this.props.auth.authorize ? 'Username' : 'Anonymous'}</NavItem>
+        </Nav>
+      </Navbar>
       {React.cloneElement(this.props.children, { actions: this.childrenActions(), page: this.childrenData() })}
     </div>;
   }

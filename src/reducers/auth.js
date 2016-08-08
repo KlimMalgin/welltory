@@ -1,11 +1,34 @@
-/*import { 
-    GET_CSRF
-    } from '../constants/auth';*/
+import { 
+    SIGNIN,
+    SIGNIN_FAIL,
+    SIGNIN_SUCCESS,
+    GET_PROFILE_SUCCESS
+    } from '../constants/auth';
 
-const initialState = {};
+const initialState = {
+  
+  profile: {},
+  
+  authorize: false
+  
+};
 
-export default function editor(state = initialState, action) {
+export default function auth(state = initialState, action) {
   switch (action.type) {
+
+    case SIGNIN:
+      return { ...state, progress: true };
+
+    case SIGNIN_SUCCESS:
+      debugger;
+      return { ...state, authorize: action.payload.success, progress: false };
+
+    case SIGNIN_FAIL:
+      return { ...state, progress: false };
+
+    case GET_PROFILE_SUCCESS:
+      debugger;
+      return { ...state, profile: action.payload };
 
     default:
         return state;

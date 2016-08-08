@@ -16,15 +16,24 @@ export function csrf () {
 
 export function signin (email, pwd) {
     return transport(
-            endpoints.signin, 
-            { // params
-                method: 'POST'
-            }, 
-            { // body
-                email: email, password: pwd 
-            },
-            { // headers
-                'X-CSRFToken': config.csrf
-            }
-        );
+        endpoints.signin, 
+        { // params
+            method: 'POST'
+        }, 
+        { // body
+            email: email, password: pwd 
+        },
+        { // headers
+            'X-CSRFToken': config.csrf
+        }
+    );
+}
+
+export function profile () {
+    return transport(
+        endpoints.profile,
+        {},{},
+        { // headers
+            'X-CSRFToken': config.csrf
+        });
 }

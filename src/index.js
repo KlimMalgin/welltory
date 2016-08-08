@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import 'normalize.css';
 import './styles/app.less';
-import App from './containers/app';
+import App from './components/app';
 import NotFoundPage from './pages/not-found-page';
 import MainPage from './pages/main-page';
 

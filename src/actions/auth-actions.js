@@ -4,12 +4,37 @@ import {
     GET_CSRF_FAIL,
     GET_CSRF_SUCCESS,
     
+    /*GET_PROFILE,
+    GET_PROFILE_FAIL,
+    GET_PROFILE_SUCCESS,*/
+    
     SIGNIN,
     SIGNIN_FAIL,
     SIGNIN_SUCCESS
     } from '../constants/auth';
 
-import { csrf, signin as postSignin } from '../api/rest';
+import { csrf, /*profile,*/ signin as postSignin } from '../api/rest';
+
+
+/*function getProfile(dispatch) {
+    dispatch({
+        type: GET_PROFILE
+    });
+    
+    profile()
+        .then((response) => {
+            dispatch({
+                type: GET_PROFILE_SUCCESS,
+                payload: JSON.parse(response.body)
+            });
+        })
+        .catch(() => {
+            console.log('profile fail');
+            dispatch({
+                type: GET_PROFILE_FAIL
+            });
+        });    
+}*/
 
 export function getCsrf() {
     return function (dispatch) {
@@ -21,7 +46,7 @@ export function getCsrf() {
             debugger;
             dispatch({
                 type: GET_CSRF_SUCCESS, 
-                payload: JSON.parse(response.body)
+                payload: response.body
             })
         }).catch(function (/*err*/) {
             dispatch({
@@ -42,7 +67,7 @@ export function signin (email, pwd) {
             debugger;
             dispatch({
                 type: SIGNIN_SUCCESS, 
-                payload: JSON.parse(response.body)
+                payload: response.body
             })
         }).catch(function (/*err*/) {
             dispatch({

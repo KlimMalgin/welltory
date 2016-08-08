@@ -6,7 +6,8 @@ let config = {
         url: 'api2/',
         endpoints: {
             csrf: 'api/version',
-            signin: 'auth/'
+            signin: 'auth/',
+            profile: 'profile/'
         }
     }
 };

@@ -29,3 +29,19 @@ export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
  * Ошибка авторизации
  */
 export const SIGNIN_FAIL = 'SIGNIN_FAIL';
+
+
+/**
+ * Запрос данных профиля
+ */
+export const GET_PROFILE = 'GET_PROFILE';
+
+/**
+ * Данные профиля успешно получены
+ */
+export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
+
+/**
+ * При получении профиля произошла ошибка
+ */
+export const GET_PROFILE_FAIL = 'GET_PROFILE_FAIL';
